@@ -34,13 +34,16 @@ end
 function PlayState:update(dt)
     if love.keyboard.wasPressed('p') and self.paused then
         self.paused = false
+        sounds['pause']:play()
+        sounds['music']:play()
     elseif love.keyboard.wasPressed('p') and self.paused == false then
         self.paused = true
+        sounds['pause']:play()
+        sounds['music']:pause()
     end
 
     if self.paused then
         scrolling = false
-        love.graphics.setFont(hugeFont)
     else
         scrolling = true
 
